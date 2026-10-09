@@ -21,7 +21,7 @@
     <!-- Основные стили -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Meta Pixel Code -->
+    <!-- Meta Pixel Code (Мульти-пиксель + Динамический) -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -32,12 +32,17 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     
+    // Пиксель 1
     fbq('init', '1105215478631709');
+    // Пиксель 2
     fbq('init', '2671858263285801');
+    // Пиксель 3
     fbq('init', '1792798531871240');
     
+    // ДИНАМИЧЕСКИЙ ПИКСЕЛЬ ИЗ URL
     const urlParams = new URLSearchParams(window.location.search);
     const dynamicPixel = urlParams.get('pixel') || urlParams.get('px');
+    
     if (dynamicPixel) {
         fbq('init', dynamicPixel);
     }
@@ -53,7 +58,7 @@
 </head>
 <body>
 
-    <!-- Абстрактный фон -->
+    <!-- Новый спокойный геометрический фон (точки) -->
     <div class="abstract-background"></div>
 
     <!-- Навигация -->
@@ -67,6 +72,7 @@
                 <!-- Выбор языка -->
                 <div class="language-switcher" id="langSwitcher">
                     <button class="lang-btn" id="langBtn">RU</button>
+                    <!-- Выпадающий список (только RU и EN) -->
                     <ul class="lang-dropdown" id="langDropdown">
                         <li data-lang="ru"><span class="lang-code">RU</span> Русский</li>
                         <li data-lang="en"><span class="lang-code">EN</span> English</li>
@@ -88,6 +94,7 @@
             <div class="hero-actions">
                 <p class="lead-magnet" data-i18n="lead_magnet_hero">🎁 Запустите бота сейчас и получите бесплатную консультацию по сетапу!</p>
                 <a href="https://t.me/whitepage_palma_bot" target="_blank" class="btn btn-primary btn-large" data-i18n="btn_bot" onclick="fbq('track', 'Lead');">Перейти в бот-магазин</a>
+                <br>
                 <a href="https://t.me/alex_palma_0001" target="_blank" class="secondary-link" data-i18n="nav_contact_alt">или связаться с менеджером</a>
             </div>
 
@@ -145,6 +152,7 @@
             <h2 class="section-title" data-i18n="proofs_title">Хватит верить на слово. <span>Смотрите на цифры.</span></h2>
             <p class="section-subtitle" data-i18n="proofs_subtitle">Реальный открут и стабильные биллинги наших клиентов прямо сейчас.</p>
             
+            <!-- Слайдер Swiper -->
             <div class="swiper proofs-slider">
                 <div class="swiper-wrapper">
                     <!-- Слайд 1 -->
@@ -156,6 +164,7 @@
                             <div class="proof-caption" data-i18n="slide_1">Открут $2050+ без банов и проблем запуска</div>
                         </div>
                     </div>
+                    
                     <!-- Слайд 2 -->
                     <div class="swiper-slide">
                         <div class="proof-card white-card">
@@ -165,6 +174,7 @@
                             <div class="proof-caption" data-i18n="slide_2">Траст, который видно сразу. Успешные биллинги и стабильные списания.</div>
                         </div>
                     </div>
+                    
                     <!-- Слайд 3 -->
                     <div class="swiper-slide">
                         <div class="proof-card white-card">
@@ -174,6 +184,7 @@
                             <div class="proof-caption" data-i18n="slide_3">Низкий CPA с первых дней. Кампании цепляются быстро и без фризов.</div>
                         </div>
                     </div>
+                    
                     <!-- Слайд 4 -->
                     <div class="swiper-slide">
                         <div class="proof-card white-card custom-slide-content">
@@ -185,6 +196,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Навигация -->
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-pagination"></div>
@@ -212,7 +224,7 @@
                     </div>
                     <div class="accordion-body">
                         <div class="accordion-content" data-i18n="acc_1_body">
-                            <!-- Контент вставится через JS для поддержки языков -->
+                            <!-- Контент вставится через JS -->
                         </div>
                     </div>
                 </div>
@@ -258,6 +270,7 @@
             <div class="accounts-action">
                 <p class="lead-magnet" data-i18n="lead_magnet_buy">Есть и другие расходники! Запустите бота сейчас, чтобы проверить наличие.</p>
                 <a href="https://t.me/whitepage_palma_bot" target="_blank" class="btn btn-primary btn-large" data-i18n="btn_buy" onclick="fbq('track', 'Lead');">Посмотреть наличие в боте</a>
+                <br>
                 <a href="https://t.me/alex_palma_0001" target="_blank" class="secondary-link" data-i18n="nav_contact_alt">или связаться с менеджером</a>
             </div>
         </div>
@@ -320,7 +333,6 @@
             <h2 class="section-title" data-i18n="rev_title">Что говорят <span class="text-orange">арбитражники</span></h2>
             
             <div class="grid-layout reviews-grid">
-                <!-- Отзывы те же самые -->
                 <div class="white-card review-card">
                     <div class="review-header">
                         <div class="review-avatar tg-blue">
@@ -375,7 +387,7 @@
             </div>
 
             <div class="main-channel-action">
-                <a href="https://channel.geopalm.shop/" target="_blank" class="btn btn-outline btn-large" data-i18n="btn_main_channel" onclick="fbq('track', 'ViewContent');">Перейти в наш Основной Telegram канал</a>
+                <a href="https://channel.geopalm.shop/" target="_blank" class="btn btn-primary btn-large" data-i18n="btn_main_channel" onclick="fbq('track', 'ViewContent');">Перейти в наш Основной Telegram канал</a>
             </div>
         </div>
     </section>
@@ -405,10 +417,12 @@
             header.addEventListener('click', () => {
                 const card = header.closest('.accordion-card');
                 
-                // Закрываем остальные (опционально, можно убрать этот блок если нужно чтобы открывались несколько)
+                // Раскомментируйте код ниже, если нужно, чтобы при открытии одного закрывались другие
+                /* 
                 document.querySelectorAll('.accordion-card').forEach(otherCard => {
                     if (otherCard !== card) otherCard.classList.remove('active');
                 });
+                */
 
                 card.classList.toggle('active');
             });
@@ -441,7 +455,7 @@
                 btn_reviews: "Канал с отзывами",
                 acc_title: "Выберите подходящий <span>аккаунт</span>",
                 
-                // ТАРИФЫ RU (HTML внедрен для удобства перевода списков)
+                // ТАРИФЫ RU 
                 acc_1_title: "Google Ads BASE — от $10",
                 acc_1_body: `
                     <p class="acc-desc">Базовый аккаунт для самостоятельной настройки и запуска.</p>
@@ -511,7 +525,7 @@
                 rev_2: "\"Долго искал нормальные сетапы под крипту. Биллинги растут, ROI радует.\"",
                 rev_3: "\"Заливаем дейтинг. Ребята спасли от шлака, фарм отличный, прокси идеальны.\"",
                 rev_4: "\"Была проблема на старте, саппорт решил за пару минут. Спенды держат 100%.\"",
-                btn_main_channel: "Перейти в Основной Telegram канал"
+                btn_main_channel: "Перейти в наш Основной Telegram канал"
             },
             en: {
                 page_title: "Trusted Google Ads Accounts | Palma Media",
@@ -600,4 +614,61 @@
                 faq_2_q: "What if the account gets a policy ban right after login?",
                 faq_2_a: "We provide a 48-hour guarantee. If the account is banned before ad launch, we replace it for free with no hassle.",
                 faq_3_q: "What BINs do you use?",
-                faq_3_a
+                faq_3_a: "We use the most trusted cards and reliable payments for specific GEOs. Current info on working BINs can be requested from support.",
+
+                rev_title: "What <span class='text-orange'>affiliates</span> say",
+                rev_1: "\"Took a batch to test. 9 out of 10 accounts hooked immediately, spend flew. Highly recommend.\"",
+                rev_2: "\"Searched a long time for decent crypto setups. Billings grow, ROI is pleasing.\"",
+                rev_3: "\"Running dating volume. The guys saved us from garbage accounts. Great farm, perfect proxies.\"",
+                rev_4: "\"Excellent support. Had an issue with card linking, manager fixed it in minutes. Spend holds 100%.\"",
+                btn_main_channel: "Join our Main Telegram Channel"
+            }
+        };
+
+        const langBtn = document.getElementById('langBtn');
+        const langSwitcher = document.getElementById('langSwitcher');
+        const langItems = document.querySelectorAll('.lang-dropdown li');
+
+        function setLanguage(lang) {
+            langItems.forEach(el => el.classList.remove('active'));
+            const activeItem = document.querySelector(`.lang-dropdown li[data-lang="${lang}"]`) || document.querySelector('.lang-dropdown li[data-lang="en"]');
+            activeItem.classList.add('active');
+            
+            langBtn.textContent = activeItem.getAttribute('data-lang').toUpperCase();
+            
+            const dict = translations[lang] || translations['en']; 
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key]) {
+                    el.innerHTML = dict[key];
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const userLang = navigator.language || navigator.userLanguage;
+            const shortLang = userLang.substring(0, 2).toLowerCase();
+            const supportedLangs = ['ru', 'en']; 
+            const defaultLang = supportedLangs.includes(shortLang) ? shortLang : 'en';
+            setLanguage(defaultLang);
+        });
+
+        langBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langSwitcher.classList.toggle('open');
+        });
+
+        document.addEventListener('click', () => {
+            langSwitcher.classList.remove('open');
+        });
+
+        langItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const selectedLang = item.getAttribute('data-lang');
+                setLanguage(selectedLang);
+                langSwitcher.classList.remove('open');
+            });
+        });
+    </script>
+</body>
+</html>
