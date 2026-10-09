@@ -1,747 +1,170 @@
 /* =========================================
-   БАЗОВЫЕ НАСТРОЙКИ И ПЕРЕМЕННЫЕ
+   ДОПОЛНЕНИЯ: ЛИД-МАГНИТЫ И ССЫЛКИ
 ========================================= */
-:root {
-    --bg-sand: #F7F5EE;         
-    --text-main: #2C3525;       
-    --text-muted: #647059;      
-    
-    --primary-olive: #627F38;   
-    --primary-orange: #E87A24;  
-    
-    --glass-bg: rgba(255, 255, 255, 0.5); 
-    --glass-border: rgba(255, 255, 255, 0.8);
-    --glass-shadow: rgba(0, 0, 0, 0.04);
-
-    --font-main: 'Inter', sans-serif;
-
-    --f-button-color: #fff;
-    --f-button-hover-color: #fff;
-    --f-button-bg: var(--primary-olive);
-    --f-button-hover-bg: var(--primary-orange);
-    --f-button-border-radius: 50%;
+.lead-magnet {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary-orange);
+    margin-bottom: 12px;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: var(--font-main);
-    background-color: var(--bg-sand);
-    color: var(--text-main);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    position: relative;
-}
-
-/* =========================================
-   ФОН (АБСТРАКТНЫЙ ГЕОМЕТРИЧЕСКИЙ УЗОР - ТОЧКИ)
-========================================= */
-.abstract-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    opacity: 0.15;
-    pointer-events: none;
-    background-image: radial-gradient(var(--primary-olive) 1.5px, transparent 1.5px);
-    background-size: 25px 25px;
-}
-
-.container {
-    width: 100%;
-    max-width: 1150px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
-
-/* =========================================
-   КНОПКИ
-========================================= */
-.btn {
+.secondary-link {
     display: inline-block;
-    padding: 12px 24px;
-    font-size: 15px;
-    font-weight: 600;
-    border-radius: 10px;
-    text-decoration: none;
-    text-align: center;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    position: relative;
-    z-index: 1;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: underline;
+    transition: color 0.2s;
 }
-
-.btn-primary {
-    background-color: var(--primary-olive);
-    color: #fff;
-    box-shadow: 0 4px 15px rgba(98, 127, 56, 0.3);
-}
-
-.btn-primary:hover {
-    background-color: var(--primary-orange);
-    box-shadow: 0 6px 20px rgba(232, 122, 36, 0.4);
-    transform: translateY(-2px);
-}
-
-.btn-primary:active {
-    transform: translateY(1px) scale(0.97);
-}
-
-.btn-outline {
-    background: rgba(255, 255, 255, 0.3);
-    border: 2px solid var(--primary-olive);
+.secondary-link:hover {
     color: var(--primary-olive);
-    backdrop-filter: blur(5px);
-}
-
-.btn-outline:hover {
-    background: var(--primary-olive);
-    color: #fff;
-    box-shadow: 0 4px 15px rgba(98, 127, 56, 0.3);
-    transform: translateY(-2px);
-}
-
-.btn-large {
-    padding: 16px 32px;
-    font-size: 16px;
-    width: 100%;
-    max-width: 400px;
-}
-
-.text-orange {
-    color: var(--primary-orange) !important;
 }
 
 /* =========================================
-   ШАПКА (HEADER) И ЯЗЫК
+   ДОПОЛНЕНИЯ: АККОРДЕОНЫ (ТАРИФЫ И FAQ)
 ========================================= */
-.header {
-    padding: 15px 0;
-    position: relative;
-    z-index: 100;
+.accounts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.header-container {
+.accordion-card {
+    padding: 0 !important; /* Убираем стандартный паддинг карточки */
+    text-align: left;
+    overflow: hidden;
+}
+
+.accordion-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.logo {
-    font-size: 22px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    color: var(--text-main);
-}
-
-.logo span {
-    color: var(--primary-orange);
-}
-
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.header .btn-outline {
-    padding: 8px 16px;
-    font-size: 13px;
-}
-
-/* СТИЛЬНЫЙ ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ */
-.language-switcher {
-    position: relative;
-}
-
-.lang-btn {
-    background: #ffffff;
-    border: 1px solid var(--primary-orange);
-    color: var(--text-main);
-    font-size: 13px;
-    font-weight: 800;
-    width: 42px;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
+    padding: 20px 25px;
     cursor: pointer;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: background 0.3s;
+    user-select: none;
+}
+.accordion-header:hover {
+    background: rgba(0, 0, 0, 0.02);
 }
 
-.lang-btn:hover {
-    background: var(--primary-orange);
-    color: #ffffff;
-}
-
-.lang-dropdown {
-    list-style: none !important;
-    margin: 0 !important;
-    padding: 10px 0 !important;
-    position: absolute;
-    top: calc(100% + 8px);
-    right: 0;
-    background-color: #1A1A1A;
-    border-radius: 8px;
-    min-width: 140px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-    z-index: 999;
-}
-
-.language-switcher.open .lang-dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.lang-dropdown li {
-    padding: 10px 20px;
-    color: #FFFFFF;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
+.acc-title-wrap {
     display: flex;
     align-items: center;
     gap: 12px;
-    transition: background 0.2s ease;
 }
-
-.lang-dropdown li:hover {
-    background-color: #2a2a2a;
+.acc-icon-small {
+    font-size: 22px;
 }
-
-.lang-code {
-    color: #888888;
-    font-size: 11px;
-    text-transform: uppercase;
-    font-weight: 800;
-    width: 20px;
-}
-
-.lang-dropdown li.active {
-    color: var(--primary-orange);
-}
-
-.lang-dropdown li.active .lang-code {
-    color: var(--primary-orange);
-}
-
-/* =========================================
-   ГЛАВНЫЙ ЭКРАН (HERO)
-========================================= */
-.hero {
-    position: relative;
-    padding: 40px 0;
-    text-align: center;
-}
-
-.hero-badge {
-    display: inline-block;
-    padding: 6px 16px;
-    background: rgba(232, 122, 36, 0.1);
-    color: var(--primary-orange);
-    border: 1px solid var(--primary-orange);
-    border-radius: 50px;
-    font-size: 12px;
-    font-weight: 700;
-    margin-bottom: 20px;
-}
-
-.hero-title {
-    font-size: 28px;
-    font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 15px;
-    color: var(--text-main);
-}
-
-.hero-title span {
-    color: var(--primary-olive);
-}
-
-.hero-subtitle {
-    font-size: 15px;
-    color: var(--text-muted);
-    max-width: 650px;
-    margin: 0 auto 30px;
-}
-
-.hero-actions {
-    margin-bottom: 40px;
-}
-
-.hero-stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    justify-items: center;
-}
-.hero-stats .stat-item:last-child {
-    grid-column: span 2;
-    width: 100%;
-    max-width: 250px;
-}
-
-/* =========================================
-   КАРТОЧКИ (СТЕКЛО И БЕЛЫЕ)
-========================================= */
-.glass-card {
-    background: var(--glass-bg); 
-    backdrop-filter: blur(16px); 
-    border: 1px solid var(--glass-border); 
-    border-radius: 12px;
-    padding: 15px;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 30px var(--glass-shadow);
-}
-
-.glass-card:hover {
-    transform: translateY(-3px);
-    background: rgba(255, 255, 255, 0.8);
-    border-color: var(--primary-olive);
-    box-shadow: 0 10px 25px rgba(98, 127, 56, 0.1);
-}
-
-.white-card {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 15px;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0,0,0,0.02);
-    width: 100%;
-}
-
-.white-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-}
-
-.stat-item {
-    text-align: center;
-}
-
-.stat-value {
-    display: block;
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--primary-olive);
-}
-
-.stat-label {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-top: 5px;
-    display: block;
-}
-
-/* =========================================
-   СЕТКИ И ЗАГОЛОВКИ СЕКЦИЙ
-========================================= */
-.section-title {
-    font-size: 24px;
-    font-weight: 800;
-    text-align: center;
-    margin-bottom: 10px;
-    color: var(--text-main);
-}
-
-.section-title span {
-    color: var(--primary-olive);
-}
-
-.section-subtitle {
-    text-align: center;
-    color: var(--text-muted);
-    max-width: 650px;
-    margin: 0 auto 30px;
-    font-size: 14px;
-}
-
-.grid-layout {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 15px;
-}
-
-/* =========================================
-   ПРЕИМУЩЕСТВА (ФИЧИ)
-========================================= */
-.features {
-    padding: 40px 0;
-}
-
-.feature-icon {
-    font-size: 24px;
-    margin-bottom: 10px;
-    background: rgba(98, 127, 56, 0.1);
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    border: 1px solid rgba(98, 127, 56, 0.2);
-}
-
-.feature-card h3 {
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: var(--text-main);
-    line-height: 1.2;
-}
-
-.feature-card p {
-    color: var(--text-muted);
-    font-size: 11px;
-    line-height: 1.3;
-}
-
-/* =========================================
-   БЛОК ПРУФОВ (СЛАЙДЕР С РОВНЫМИ ФОТО)
-========================================= */
-.proofs {
-    padding: 40px 0;
-}
-
-.proofs-slider {
-    padding: 0 35px 50px 35px;
-}
-
-.proofs-slider .swiper-slide {
-    height: auto; 
-    display: flex;
-}
-
-.proof-card {
-    padding: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Fix para sa mga ladawan tapno napintas da a buyaen */
-.proof-img-wrap {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 10; 
-    overflow: hidden; 
-}
-
-.proof-img-wrap img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover; 
-    object-position: top; 
-    border-bottom: 1px solid rgba(0,0,0, 0.05);
-    transition: transform 0.4s ease; 
-}
-
-.proof-img-wrap:hover img {
-    transform: scale(1.05);
-}
-
-.proof-caption {
-    padding: 15px;
-    flex-grow: 1; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    font-size: 12px;
-    text-align: center;
-    background: #fff;
-}
-
-.custom-slide-content {
-    position: relative;
-}
-.slide-btn {
-    display: block;
-    margin: 0 15px 15px 15px;
-    font-size: 13px;
-    padding: 10px;
-}
-
-.swiper-button-next { right: 0 !important; }
-.swiper-button-prev { left: 0 !important; }
-.swiper-button-next, .swiper-button-prev {
-    color: var(--primary-olive) !important;
-    transform: scale(0.7);
-}
-.swiper-pagination-bullet-active {
-    background: var(--primary-orange) !important;
-}
-
-/* =========================================
-   БЛОК: АККАУНТЫ
-========================================= */
-.accounts {
-    padding: 40px 0;
-}
-
-.accounts-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-}
-
-.account-card {
-    text-align: center;
-    padding: 25px 15px;
-}
-
-.acc-icon {
-    font-size: 35px;
-    margin-bottom: 10px;
-}
-
-.account-card h3 {
+.accordion-header h3 {
     font-size: 18px;
-    margin-bottom: 8px;
+    margin: 0;
     color: var(--primary-olive);
 }
 
-.account-card p {
-    font-size: 13px;
+.acc-toggle-icon {
     color: var(--text-muted);
-}
-
-.accounts-action {
-    text-align: center;
-    margin-top: 35px;
-}
-
-.extra-supplies {
-    font-size: 14px;
-    color: var(--text-muted);
-    margin-bottom: 15px;
-    font-weight: 600;
-}
-
-/* =========================================
-   БЛОК ОТЗЫВОВ
-========================================= */
-.reviews {
-    padding: 40px 0 60px;
-}
-
-.review-header {
-    display: flex;
-    flex-direction: column; 
-    align-items: flex-start;
-    gap: 8px;
-    margin-bottom: 10px;
-}
-
-.tg-blue {
-    background: #0088cc;
-}
-
-.review-avatar {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
+    transition: transform 0.3s ease;
     display: flex;
     align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 10px rgba(0, 136, 204, 0.2);
 }
 
-.review-author h4 {
-    font-size: 13px;
-    margin-bottom: 0;
-    color: var(--text-main);
-    line-height: 1.1;
+/* Скрытый контент (Анимация через Grid) */
+.accordion-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s ease;
+}
+.accordion-content {
+    overflow: hidden;
+    padding: 0 25px; /* Боковые отступы */
+}
+/* Чтобы снизу был отступ только когда открыто */
+.accordion-content > *:last-child {
+    margin-bottom: 25px;
 }
 
-.review-author span {
-    font-size: 10px;
+/* Состояние "Открыто" */
+.accordion-card.active .accordion-body {
+    grid-template-rows: 1fr;
+}
+.accordion-card.active .acc-toggle-icon {
+    transform: rotate(180deg);
+    color: var(--primary-orange);
+}
+.accordion-card.active .accordion-header {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Списки внутри тарифов */
+.acc-desc {
+    font-size: 15px;
     font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.acc-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 20px 0;
+    font-size: 14px;
+    color: var(--text-main);
+}
+.acc-list li {
+    margin-bottom: 6px;
+    padding-left: 5px;
+}
+.accordion-content p {
+    font-size: 14px;
+    margin-bottom: 8px;
 }
 
-.review-text {
-    font-style: italic;
-    font-size: 11px;
-    line-height: 1.4;
+/* =========================================
+   БЛОК FAQ
+========================================= */
+.faq {
+    padding: 40px 0;
+}
+.faq .accordion-header h3 {
+    font-size: 16px;
+    color: var(--text-main);
+}
+.faq .accordion-content p {
+    margin-top: 15px;
     color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.6;
 }
 
-.main-channel-action {
-    text-align: center;
-    margin-top: 30px;
-}
-
-/* =========================================
-   КАСТОМИЗАЦИЯ ВСПЛЫВАЮЩИХ ОКОН (FANCYBOX)
-========================================= */
-.fancybox__backdrop {
-    background: rgba(247, 245, 238, 0.95) !important;
-    backdrop-filter: blur(8px);
-}
-.fancybox__image {
-    border-radius: 12px !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
-}
-
-/* =========================================
-   АДАПТИВНОСТЬ (МЕДИА-ЗАПРОСЫ) ДЛЯ ПК
-========================================= */
+/* Адаптив для новых блоков ПК */
 @media (min-width: 768px) {
-    .container {
-        padding: 0 20px;
-    }
-    
-    .header .btn-outline {
-        display: inline-block;
-        padding: 12px 24px;
+    .lead-magnet {
         font-size: 15px;
     }
-    .lang-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 15px;
+    .secondary-link {
+        font-size: 14px;
     }
-    
-    .logo {
-        font-size: 26px;
-    }
-    .hero {
-        padding: 80px 0 100px;
-    }
-    .hero-badge {
-        font-size: 15px;
-        padding: 8px 24px;
-    }
-    .hero-title {
-        font-size: 52px;
-    }
-    .hero-subtitle {
-        font-size: 19px;
-    }
-    
-    .hero-stats {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-    }
-    .hero-stats .stat-item:last-child {
-        grid-column: auto;
-    }
-    .stat-item {
-        min-width: 170px;
+    .accordion-header {
         padding: 24px 30px;
     }
-    .stat-value {
-        font-size: 28px;
-    }
-    .stat-label {
-        font-size: 13px;
-    }
-    
-    .section-title {
-        font-size: 40px;
-        margin-bottom: 15px;
-    }
-    .section-subtitle {
-        font-size: 16px;
-        margin-bottom: 50px;
-    }
-    
-    .grid-layout {
-        grid-template-columns: repeat(4, 1fr); 
-        gap: 24px;
-    }
-    .reviews-grid {
-        grid-template-columns: repeat(2, 1fr); 
-    }
-    .accounts-grid {
-        grid-template-columns: repeat(3, 1fr); 
-    }
-
-    .glass-card, .white-card {
-        padding: 24px;
-        border-radius: 16px;
-    }
-
-    .feature-icon {
-        width: 64px;
-        height: 64px;
-        font-size: 32px;
-    }
-    .feature-card h3 {
+    .accordion-header h3 {
         font-size: 20px;
     }
-    .feature-card p {
-        font-size: 15px;
+    .accordion-content {
+        padding: 0 30px;
     }
-    
-    .account-card h3 {
-        font-size: 22px;
-        margin-bottom: 12px;
+    .accordion-content > *:last-child {
+        margin-bottom: 30px;
     }
-    .account-card p {
-        font-size: 15px;
-    }
-    .extra-supplies {
+    .acc-desc {
         font-size: 16px;
     }
-
-    .proof-caption {
-        font-size: 15px;
-        padding: 20px;
-    }
-    .slide-btn {
-        font-size: 15px;
-        margin: 0 20px 20px 20px;
-    }
-    .swiper-button-next, .swiper-button-prev {
-        transform: scale(1); 
-    }
-
-    .review-header {
-        flex-direction: row; 
-        align-items: center;
-        gap: 15px;
-    }
-    .review-avatar {
-        width: 50px;
-        height: 50px;
-    }
-    .review-author h4 {
-        font-size: 17px;
-    }
-    .review-author span {
-        font-size: 13px;
-    }
-    .review-text {
+    .acc-list, .accordion-content p {
         font-size: 15px;
     }
-    
-    .btn-large {
-        width: auto;
-    }
-}
-
-/* Скрываем кнопку менеджера на мобилках */
-@media (max-width: 500px) {
-    .header .btn-outline {
-        display: none; 
+    .faq .accordion-header h3 {
+        font-size: 18px;
     }
 }
