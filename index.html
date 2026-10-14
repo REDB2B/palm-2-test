@@ -6,6 +6,7 @@
   <meta name="description" content="Аккаунты Google Ads для медиабаинга. Условия, подбор и поддержка PALMA MEDIA.">
   <title data-i18n="page_title">PALMA MEDIA — аккаунты Google Ads</title>
   
+  <!-- Fancybox для открытия фото -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
   <link rel="stylesheet" href="style.css">
 </head>
@@ -37,7 +38,8 @@
       <nav class="navlinks" aria-label="Основная навигация">
         <a href="#plans" data-i18n="nav_plans">Аккаунты</a>
         <a href="#how" data-i18n="nav_how">Как это работает</a>
-        <a href="#guarantee" data-i18n="nav_guarantee">Гарантия</a>
+        <!-- Теперь ведет четко на Гарантию -->
+        <a href="#guarantee" data-i18n="nav_guarantee">Гарантия</a> 
         <a href="#faq" data-i18n="nav_faq">FAQ</a>
       </nav>
 
@@ -52,9 +54,6 @@
   </header>
 
   <main id="top">
-    <!-- Фоновое свечение -->
-    <div class="glow-bg"></div>
-
     <!-- ГЛАВНЫЙ ЭКРАН -->
     <section class="hero">
       <div class="wrap hero-grid">
@@ -79,7 +78,8 @@
         </div>
 
         <div class="hero-art" aria-label="Иллюстрация панели кампании">
-          <div class="orb"></div>
+          <!-- Фоновое свечение теперь жестко привязано сюда -->
+          <div class="glow-bg"></div>
 
           <div class="float-card float-left">
             <span data-i18n="art_float_1_1">Поддержка</span>
@@ -124,7 +124,7 @@
       </div>
     </section>
 
-    <!-- ТАРИФЫ -->
+    <!-- ТАРИФЫ (Цены убраны, аккордеон работает) -->
     <section class="section" id="plans">
       <div class="wrap">
         <div class="section-head">
@@ -138,7 +138,7 @@
         </div>
 
         <div class="cards" id="plans-container">
-          <!-- Рендер через JS -->
+          <!-- Карточки вставляются через JS -->
         </div>
 
         <p class="note" data-i18n="plans_note">
@@ -224,7 +224,7 @@
       </div>
     </section>
 
-    <!-- КЕЙСЫ (КАРТИНКИ) -->
+    <!-- КЕЙСЫ (Фото открываются!) -->
     <section class="section" id="cases">
       <div class="wrap">
         <div class="section-head">
@@ -281,7 +281,7 @@
           <article class="review">
             <div class="stars">★★★★★</div>
             <blockquote data-i18n="rev_t1">«Брал пачку акков VERIFIED на тест. Из 10 штук 9 зацепились сразу, спенд полетел. Никаких микро-банов на старте. Рекомендую.»</blockquote>
-            <strong>TRAFFIC DEVILS · Team</strong>
+            <strong>TRAFFIC DEVILS · Media Buyer</strong>
           </article>
           <article class="review">
             <div class="stars">★★★★★</div>
@@ -314,7 +314,8 @@
               <span data-i18n="gar_b2">🔄 Бесплатная замена</span>
             </div>
           </div>
-          <a class="btn btn-secondary" href="#faq" data-i18n="gar_btn">Полные условия ↓</a>
+          <!-- Эта кнопка ведет на FAQ, так как полные условия расписаны там во втором вопросе -->
+          <a class="btn btn-secondary" href="#faq" data-i18n="gar_btn">Читать условия в FAQ ↓</a>
         </div>
         
         <div class="guarantee-cta">
@@ -335,29 +336,24 @@
         </div>
 
         <div class="supplies-grid">
-          <!-- White Page -->
           <details class="supply-card">
             <summary>🖥 White Page — сайты, которые проходят модерацию <span class="arrow">▼</span></summary>
             <div class="supply-content">
               <p class="supply-desc" data-i18n="sup_wp_desc">Наши white page проходят проверку Google Ads, Facebook Ads, TikTok Ads и Bing Ads с первого раза, повышают Trust Score аккаунта и продлевают жизнь кампаний.</p>
-              
               <ul class="supply-list">
                 <li><strong data-i18n="sup_wp_1">📄 Single Page:</strong> <span data-i18n="sup_wp_1d">Одностраничник с уникальным контентом, адаптивным дизайном, SSL и формой обратной связи. Лучший выбор для быстрого старта.</span></li>
                 <li><strong data-i18n="sup_wp_2">📑 Multi Page:</strong> <span data-i18n="sup_wp_2d">3–5 страниц: главная, о компании, услуги, контакты. Выглядит как реальный бизнес-сайт — максимум траста.</span></li>
                 <li><strong data-i18n="sup_wp_3">⭐️ Special (custom):</strong> <span data-i18n="sup_wp_3d">Кастомный проект под вашу нишу и GEO. Для долгих кампаний и крупных бюджетов.</span></li>
               </ul>
               <p class="supply-time" data-i18n="sup_wp_time">⏱️ Готовность — от 2 до 12 часов</p>
-              
               <a href="https://t.me/alex_palma_0001?text=Здравствуйте!%20Хочу%20заказать%20White%20Page." target="_blank" class="btn btn-secondary" data-i18n="sup_wp_btn">Заказать White Page ↗</a>
             </div>
           </details>
 
-          <!-- Quick START -->
           <details class="supply-card">
             <summary>🌐 Домены и клоакинг (Quick START) <span class="arrow">▼</span></summary>
             <div class="supply-content">
               <p class="supply-desc" data-i18n="sup_qs_desc">Забудьте про баны и техническую возню. Мы собираем полный рекламный стек под ключ и отдаём готовую инфраструктуру за 12 часов — остаётся только залить трафик.</p>
-              
               <ul class="supply-list">
                 <li data-i18n="sup_qs_1">⚙️ <strong>Tracker (TDS)</strong> — потоки, постбэки, распределение трафика</li>
                 <li data-i18n="sup_qs_2">🛡 <strong>Клоакинг-фильтры</strong> — защита от модерации, ботов и ручных проверок</li>
@@ -366,7 +362,6 @@
                 <li data-i18n="sup_qs_5">📊 Настройка потоков по GEO, устройствам и источникам</li>
                 <li data-i18n="sup_qs_6">🔧 Техподдержка 24/7</li>
               </ul>
-              
               <a href="https://t.me/alex_palma_0001?text=Здравствуйте!%20Интересует%20инфраструктура%20Quick%20START." target="_blank" class="btn btn-secondary" data-i18n="sup_qs_btn">Узнать про Quick START ↗</a>
             </div>
           </details>
@@ -461,6 +456,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 
   <script>
+    // Инициализация Fancybox для картинок
     Fancybox.bind('[data-fancybox="cases"]', {});
 
     // --- ТАЙМЕР ---
@@ -488,6 +484,7 @@
     };
 
     // --- МУЛЬТИЯЗЫЧНОСТЬ ---
+    // Все твои новые тексты внесены сюда!
     const i18n = {
       ru: {
         page_title: "PALMA MEDIA — аккаунты Google Ads",
@@ -510,14 +507,14 @@
         plans_kicker: "Выберите решение", plans_h2: "Три варианта<br>Один понятный выбор", plans_p: "Сравните варианты и выберите подходящий. Точную цену, наличие сетапов и лимиты менеджер подскажет перед оформлением заказа.",
         plans_note: "Перед оплатой запросите актуальные характеристики, цену, правила использования и полные условия гарантии.",
         
-        // ТАРИФЫ (БЕЗ ЦЕН)
+        // ТАРИФЫ (Без цен, только описание в аккордеоне)
         plan_base: `
             <span class="pill">СТАРТ</span>
             <h3>🚀 Google Ads BASE</h3>
+            <p class="desc-sub" style="margin-bottom: 15px; color: var(--muted);"><strong>👤 Подойдёт, если:</strong><br>у вас уже есть свой процесс прогрева, настройки окружения и запуска.</p>
             <details class="plan-accordion">
               <summary>Раскрыть описание <span class="arrow">▼</span></summary>
               <div class="accordion-content">
-                <p class="desc-sub" style="margin-bottom: 15px; color: var(--muted);"><strong>👤 Подойдёт, если:</strong><br>у вас уже есть свой процесс прогрева, настройки окружения и запуска.</p>
                 <ul><li><strong>📦 Что входит:</strong></li><li>✅ Gmail 2023–2025</li><li>✅ Cookies</li><li>✅ 2FA + Backup codes</li></ul>
                 <ul style="margin-top: 12px;"><li><strong>⚙️ Особенности:</strong></li><li>🌍 GEO: MIX</li><li>❌ Без верификации</li><li>❌ Без прогрева</li><li>❌ Без прокси</li><li>🚫 Без Google Ads</li><li>⏱️ Передача: 1–2 дня</li></ul>
               </div>
@@ -527,10 +524,10 @@
         plan_verif: `
             <span class="pill">СБАЛАНСИРОВАННЫЙ ВЫБОР</span>
             <h3>✅ Google Ads VERIFIED</h3>
+            <p class="desc-sub" style="margin-bottom: 15px; color: var(--text);"><strong>👤 Подойдёт, если:</strong><br>нужен готовый вариант без самостоятельного прохождения верификации.</p>
             <details class="plan-accordion" open>
               <summary>Скрыть описание <span class="arrow">▼</span></summary>
               <div class="accordion-content">
-                <p class="desc-sub" style="margin-bottom: 15px; color: var(--text);"><strong>👤 Подойдёт, если:</strong><br>нужен готовый вариант без самостоятельного прохождения верификации.</p>
                 <ul><li><strong>📦 Что входит:</strong></li><li>✅ Google Ads (лог/пасс)</li><li>✅ 2FA + Backup codes</li><li>✅ Приватный прокси</li><li>✅ Настроенный Octo</li><li>✅ Документы (по запросу)</li></ul>
                 <ul style="margin-top: 12px;"><li><strong>⚙️ Особенности:</strong></li><li>🌍 GEO: Индонезия, Индия и др.</li><li>✅ Пройдена верификация</li><li>✍️ Ручная регистрация</li><li>❌ Без прогрева</li><li>⚡️ Фарм: от 7 дней</li><li>⏱️ Передача: 1–2 дня</li></ul>
               </div>
@@ -540,10 +537,10 @@
         plan_trust: `
             <span class="pill">ДЛЯ ОПЫТНЫХ</span>
             <h3>💎 Google Ads TRUST MAX</h3>
+            <p class="desc-sub" style="margin-bottom: 15px; color: var(--muted);"><strong>👤 Подойдёт, если:</strong><br>нужен быстрый запуск — у аккаунта уже есть история рекламной активности.</p>
             <details class="plan-accordion">
               <summary>Раскрыть описание <span class="arrow">▼</span></summary>
               <div class="accordion-content">
-                <p class="desc-sub" style="margin-bottom: 15px; color: var(--muted);"><strong>👤 Подойдёт, если:</strong><br>нужен быстрый запуск — у аккаунта уже есть история рекламной активности.</p>
                 <ul><li><strong>💳 Биллинг на выбор:</strong></li><li>💰 <strong>PrePay</strong> (наша карта)</li><li>💳 <strong>PostPay</strong> (ваша или наша)</li></ul>
                 <ul style="margin-top: 12px;"><li><strong>⚙️ Особенности:</strong></li><li>🌍 Топовые ГЕО под задачу</li><li>🔥 Прогрев белой кампанией</li><li>⏱️ Передача: 2–4 дня</li></ul>
               </div>
@@ -572,7 +569,7 @@
         
         gar_h3: "Честная гарантия 48 часов на замену", 
         gar_p: "Улетел на полиси до запуска РК? Выдадим новый бесплатно. Меняем аккаунты при блокировках Suspicious Payment и Unacceptable Business до старта вашего трафика.", 
-        gar_b1: "⏱️ 48 часов на тест", gar_b2: "🔄 Бесплатная замена", gar_btn: "Полные условия ↓",
+        gar_b1: "⏱️ 48 часов на тест", gar_b2: "🔄 Бесплатная замена", gar_btn: "Читать условия в FAQ ↓",
         gar_cta: "Попробуй взять один из качественных аккаунтов в тест ↗",
         
         sup_kicker: "Всё для залива", sup_h2: "Другие необходимые<br>инструменты", sup_p: "Закрываем технические вопросы под ключ, чтобы вы сфокусировались на ROI.",
@@ -628,10 +625,10 @@
         plan_base: `
             <span class="pill">START</span>
             <h3>🚀 Google Ads BASE</h3>
+            <p class="desc-sub" style="margin-bottom: 15px; color: var(--muted);"><strong>👤 Good for you if:</strong><br>you already have your own warm-up, environment, and launch process.</p>
             <details class="plan-accordion">
               <summary>Show description <span class="arrow">▼</span></summary>
               <div class="accordion-content">
-                <p class="desc-sub" style="margin-bottom: 15px; color: var(--muted);"><strong>👤 Good for you if:</strong><br>you already have your own warm-up, environment, and launch process.</p>
                 <ul><li><strong>📦 Included:</strong></li><li>✅ Gmail 2023–2025</li><li>✅ Cookies</li><li>✅ 2FA + Backup codes</li></ul>
                 <ul style="margin-top: 12px;"><li><strong>⚙️ Features:</strong></li><li>🌍 GEO: MIX</li><li>❌ No verification</li><li>❌ No warm-up</li><li>❌ No proxy</li><li>🚫 No Google Ads history</li><li>⏱️ Delivery: 1–2 days</li></ul>
               </div>
@@ -641,10 +638,10 @@
         plan_verif: `
             <span class="pill">BALANCED CHOICE</span>
             <h3>✅ Google Ads VERIFIED</h3>
+            <p class="desc-sub" style="margin-bottom: 15px; color: var(--text);"><strong>👤 Good for you if:</strong><br>you need a ready option without passing verification yourself.</p>
             <details class="plan-accordion" open>
               <summary>Hide description <span class="arrow">▼</span></summary>
               <div class="accordion-content">
-                <p class="desc-sub" style="margin-bottom: 15px; color: var(--text);"><strong>👤 Good for you if:</strong><br>you need a ready option without passing verification yourself.</p>
                 <ul><li><strong>📦 Included:</strong></li><li>✅ Google Ads (log/pass)</li><li>✅ 2FA + Backup</li><li>✅ Private proxy</li><li>✅ Octo Browser set</li><li>✅ Docs (on request)</li></ul>
                 <ul style="margin-top: 12px;"><li><strong>⚙️ Features:</strong></li><li>🌍 GEO: Indonesia, India, etc.</li><li>✅ Verification passed</li><li>✍️ Manual reg</li><li>❌ No warm-up</li><li>⚡️ Farm: 7+ days</li><li>⏱️ Delivery: 1–2 days</li></ul>
               </div>
@@ -654,10 +651,10 @@
         plan_trust: `
             <span class="pill">FOR EXPERTS</span>
             <h3>💎 Google Ads TRUST MAX</h3>
+            <p class="desc-sub" style="margin-bottom: 15px; color: var(--muted);"><strong>👤 Good for you if:</strong><br>you need a fast launch — account already has advertising history.</p>
             <details class="plan-accordion">
               <summary>Show description <span class="arrow">▼</span></summary>
               <div class="accordion-content">
-                <p class="desc-sub" style="margin-bottom: 15px; color: var(--muted);"><strong>👤 Good for you if:</strong><br>you need a fast launch — account already has advertising history.</p>
                 <ul><li><strong>💳 Billing options:</strong></li><li>💰 <strong>PrePay</strong> (our card)</li><li>💳 <strong>PostPay</strong> (our/your card)</li></ul>
                 <ul style="margin-top: 12px;"><li><strong>⚙️ Features:</strong></li><li>🌍 Top GEOs</li><li>🔥 Warmed with white campaigns</li><li>⏱️ Delivery: 2–4 days</li></ul>
               </div>
@@ -673,7 +670,7 @@
         how_kicker: "No surprises", how_h2: "From selection to order<br>in three steps", how_p: "We explain in advance what will happen next.",
         how_s1_tag: "STEP 01 / SELECTION", how_s1_h3: "Describe task", how_s1_p: "Choose an option or tell the manager.",
         how_s2_tag: "STEP 02 / AGREEMENT", how_s2_h3: "Check details", how_s2_p: "Clarify price, package, and terms.",
-        how_s3_tag: "STEP 03 / ORDER", how_s3_h3: "Make a decision", how_s3_p: "We proceed to payment and delivery only after agreeing on all details and answering all your questions.",
+        how_s3_tag: "STEP 03 / ORDER", how_s3_h3: "Make a decision", how_s3_p: "We proceed to payment and delivery only after agreeing on all details.",
         cases_kicker: "Practice, not promises", cases_h2: "Cases with clear<br>context", cases_p: "Confirmed results of our accounts.",
         cases_t1: "CASE 01 · HIGH SPEND", cases_h1: "Spend $2,050+", cases_p1: "Stable spend without policy bans.",
         cases_t2: "CASE 02 · PERFECT BILLING", cases_h2: "Stable charges", cases_p2: "No problems with card linking.",
@@ -686,7 +683,7 @@
         
         gar_h3: "Fair 48-Hour Replacement Guarantee", 
         gar_p: "Got a policy ban before launch? We'll issue a new one for free. We replace accounts for Suspicious Payment and Unacceptable Business bans.", 
-        gar_b1: "⏱️ 48 hours test", gar_b2: "🔄 Free replacement", gar_btn: "Full terms ↓",
+        gar_b1: "⏱️ 48 hours test", gar_b2: "🔄 Free replacement", gar_btn: "Read terms in FAQ ↓",
         gar_cta: "Try one of our high-quality accounts for a test ↗",
 
         sup_kicker: "Everything for launch", sup_h2: "Other necessary<br>tools", sup_p: "Turnkey technical solutions.",
@@ -703,4 +700,101 @@
         faq_kicker: "Common Questions", faq_h2: "FAQ", faq_p: "Answers to common questions.",
         faq_q1: "1. What accounts can I order?", faq_a1: "BASE, VERIFIED, or TRUST MAX.",
         faq_q2: "2. What if account gets banned?", faq_a2: "Free replacement within 24h if it's not your fault.",
-        faq_q3: "3
+        faq_q3: "3. How to add funds?", faq_a3: "Crypto payments: USDT, BTC, ETH.",
+        faq_q4: "4. What is Quick START?", faq_a4: "Tracker, cloaking, domains, WP setup.",
+        faq_q5: "5. What is a White Page?", faq_a5: "Clean site for passing moderation.",
+        faq_q6: "6. Delivery time?", faq_a6: "1-4 days depending on account type.",
+        faq_q7: "7. Any discounts?", faq_a7: "Yes, use promo codes or ask manager.",
+        faq_q8: "8. Referral program?", faq_a8: "Yes, invite clients and get %.",
+        faq_footer: "💬 Have questions? We are 24/7.", faq_btn: "Contact Manager ↗",
+
+        cta_kicker: "Next step", cta_h2: "Tell us about the task.", cta_p: "The decision to pay remains yours.", cta_btn: "Get consultation and account ↗",
+        footer_disc: "Information must correspond to actual conditions.", mob_btn: "Choose account ↗"
+      }
+    };
+
+    function toggleLang(lang) {
+      document.getElementById('btn-ru').classList.remove('active');
+      document.getElementById('btn-en').classList.remove('active');
+      document.getElementById('btn-' + lang).classList.add('active');
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (i18n[lang][key]) {
+          el.innerHTML = i18n[lang][key];
+        }
+      });
+      
+      const plansHtml = `
+        <article class="plan">${i18n[lang].plan_base}</article>
+        <article class="plan featured">${i18n[lang].plan_verif}</article>
+        <article class="plan">${i18n[lang].plan_trust}</article>
+      `;
+      document.getElementById('plans-container').innerHTML = plansHtml;
+      
+      document.querySelectorAll('.plan-accordion').forEach(acc => {
+        acc.addEventListener('toggle', function() {
+          const summaryText = this.querySelector('summary').childNodes[0];
+          if (this.open) {
+            summaryText.textContent = lang === 'ru' ? 'Скрыть описание ' : 'Hide description ';
+          } else {
+            summaryText.textContent = lang === 'ru' ? 'Раскрыть описание ' : 'Show description ';
+          }
+        });
+      });
+
+      const currentLang = document.getElementById('btn-ru').classList.contains('active') ? 'ru' : 'en';
+      updateRecommendation(currentLang);
+    }
+
+    // --- КВИЗ (ЛОГИКА) ---
+    const selections = {
+      experience: 'Сам всё настраиваю',
+      verification: 'Нет, пройду сам',
+      history: 'Можно без истории',
+      plan: 'Google Ads BASE'
+    };
+
+    function updateRecommendation(lang = 'ru') {
+      let name = 'Google Ads BASE';
+      let reason = lang === 'ru' ? 'Идеально для самостоятельного запуска.' : 'Ideal for independent launch.';
+
+      if (selections.experience === 'Нужен готовый сетап' || selections.verification === 'Да, нужна пройденая') {
+        name = 'Google Ads VERIFIED';
+        reason = lang === 'ru' ? 'Аккаунт с готовым окружением и пройденной проверкой.' : 'Account with ready environment and passed check.';
+      }
+      if (selections.history === 'Нужен прогрев и траст') {
+        name = 'Google Ads TRUST MAX';
+        reason = lang === 'ru' ? 'Максимальная подготовка для быстрого зацепа.' : 'Maximum preparation for fast hook.';
+      }
+
+      selections.plan = name;
+      document.getElementById('recommend-name').textContent = name;
+      document.getElementById('recommend-reason').textContent = reason;
+    }
+
+    document.querySelectorAll('.choice-row').forEach(row => {
+      row.querySelectorAll('.choice').forEach(button => {
+        button.addEventListener('click', () => {
+          row.querySelectorAll('.choice').forEach(item => item.setAttribute('aria-pressed', 'false'));
+          button.setAttribute('aria-pressed', 'true');
+          selections[row.dataset.group] = button.dataset.value;
+          
+          const currentLang = document.getElementById('btn-ru').classList.contains('active') ? 'ru' : 'en';
+          updateRecommendation(currentLang);
+        });
+      });
+    });
+
+    // Обработка кнопки результата квиза
+    document.getElementById('send-choice').addEventListener('click', () => {
+      const msg = `Здравствуйте! Мне нужен аккаунт.\n\nМои ответы:\n- Опыт: ${selections.experience}\n- Верификация: ${selections.verification}\n- История: ${selections.history}\n\nПредварительный выбор: ${selections.plan}\n\nПодскажите стоимость и актуальные гео.`;
+      const url = 'https://t.me/alex_palma_0001?text=' + encodeURIComponent(msg);
+      window.open(url, '_blank', 'noopener');
+    });
+
+    toggleLang('ru');
+
+  </script>
+</body>
+</html>
