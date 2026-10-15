@@ -9,6 +9,178 @@
   <!-- Fancybox для открытия фото -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
   <link rel="stylesheet" href="style.css">
+
+  <!-- ================= ТОЧНЫЙ META PIXEL + CAPI (БЕЗ ДУБЛЕЙ И БОТОВ) ================= -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+
+    // 1. Твои пиксели и токены CAPI
+    const ALL_PIXELS = {
+      '1105215478631709': null,
+      '2671858263285801': 'EAAjNgwATcRYBSun3QYlibD9y42TZAOXhYzDiHs6DAp2i3TLLSMrmOFvwNFPfi2FeeC81en6akWTfUeFWJKvv17VhIaHaWHaGOZBxAkdKSV18vMdL15UUozCbKuuJXXGjodZBtVNlvSwSMTAyfviVJNQhIwe569ZCFGpmvIS3l916brIg9geIZAT6CABK0WIuWvgZDZD',
+      '1792798531871240': 'EAGUJi76ztAoBSpvdu4nmHXEJUfZAPTaNZCRAllJmiUZCG2L4lAEpvXAZCQIITlH5GNtEZCZAZB8VxZAARzY8Aw3JGxbNKpp7b1ZCLyf7O2ctM24yFUCwXx9wwyhZB3y3OAKbXGhc5XLSpmxT5JzDSvkt4SBEDAKZA4RPznwMbH412bbla1qZCbAxdMx21qp3WIhGVJceuwZDZD'
+    };
+
+    // 2. Читаем параметры из ссылки
+    const urlParams = new URLSearchParams(window.location.search);
+    const dynamicPx = (urlParams.get('px') || urlParams.get('pixel') || '').trim();
+    const dynamicToken = (urlParams.get('token') || urlParams.get('access_token') || '').trim();
+    const testEventCode = (urlParams.get('test_code') || '').trim();
+
+    const fbUtmData = {
+      utm_campaign: urlParams.get('utm_campaign') || '',
+      adset_id: urlParams.get('adset_id') || '',
+      utm_content: urlParams.get('utm_content') || ''
+    };
+
+    // ВАЖНО: Если в ссылке указан ?px=..., стреляем ТОЛЬКО в него (чтобы не плодить события в других РК).
+    // Если зашли без ?px=..., работают все 3 базовых пикселя.
+    let ACTIVE_PIXELS = [];
+    if (dynamicPx && /^\d+$/.test(dynamicPx)) {
+      if (!ALL_PIXELS.hasOwnProperty(dynamicPx)) {
+        ALL_PIXELS[dynamicPx] = dynamicToken || null;
+      } else if (dynamicToken) {
+        ALL_PIXELS[dynamicPx] = dynamicToken;
+      }
+      ACTIVE_PIXELS = [dynamicPx];
+    } else {
+      ACTIVE_PIXELS = Object.keys(ALL_PIXELS);
+    }
+
+    // 3. Анти-бот проверка (отсекаем ботов ФБ, которые кликают по ссылкам за 0.5 сек)
+    const pageLoadTime = Date.now();
+    let isHumanUser = false;
+    ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(evt => {
+      window.addEventListener(evt, () => { isHumanUser = true; }, { once: true, passive: true });
+    });
+
+    // 4. Работа с куками _fbc и _fbp
+    function getCookie(name) {
+      const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+      return match ? decodeURIComponent(match[2]) : null;
+    }
+
+    function setCookie(name, value, days = 90) {
+      const d = new Date();
+      d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+      document.cookie = `${name}=${encodeURIComponent(value)};expires=${d.toUTCString()};path=/;SameSite=Lax`;
+    }
+
+    function ensureFbcAndFbp() {
+      const fbclid = urlParams.get('fbclid');
+      let fbc = getCookie('_fbc') || localStorage.getItem('_fbc_backup');
+      if (fbclid) {
+        fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+        setCookie('_fbc', fbc);
+        try { localStorage.setItem('_fbc_backup', fbc); } catch(e) {}
+      }
+
+      let fbp = getCookie('_fbp') || localStorage.getItem('_fbp_backup');
+      if (!fbp) {
+        fbp = 'fb.1.' + Date.now() + '.' + Math.floor(1000000000 + Math.random() * 9000000000);
+        setCookie('_fbp', fbp);
+      }
+      try { localStorage.setItem('_fbp_backup', fbp); } catch(e) {}
+
+      return { fbc, fbp };
+    }
+
+    ensureFbcAndFbp();
+
+    // 5. Отправка CAPI (строго 1 пакет с тем же event_id для 100% склейки с браузером)
+    function sendServerCAPI(pixelId, token, eventName, eventId, customData = {}) {
+      if (!token) return;
+
+      const { fbc, fbp } = ensureFbcAndFbp();
+      const userData = { client_user_agent: navigator.userAgent };
+      if (fbp) userData.fbp = fbp;
+      if (fbc) userData.fbc = fbc;
+
+      const bodyData = {
+        data: [{
+          event_name: eventName,
+          event_time: Math.floor(Date.now() / 1000),
+          action_source: 'website',
+          event_id: eventId,
+          event_source_url: window.location.href,
+          user_data: userData,
+          custom_data: { ...fbUtmData, ...customData }
+        }]
+      };
+
+      if (testEventCode) bodyData.test_event_code = testEventCode;
+
+      const apiUrl = `https://graph.facebook.com/v19.0/${pixelId}/events?access_token=${encodeURIComponent(token)}`;
+      const jsonString = JSON.stringify(bodyData);
+
+      if (navigator.sendBeacon) {
+        try {
+          const blob = new Blob([jsonString], { type: 'application/json' });
+          if (navigator.sendBeacon(apiUrl, blob)) return;
+        } catch (e) {}
+      }
+
+      fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: jsonString,
+        keepalive: true
+      }).catch(() => {});
+    }
+
+    // 6. Главная функция трекинга (с жестким лимитом: 1 Contact на 1 уникального юзера)
+    window.trackFBEvent = function(eventName, customData = {}) {
+      // Если это событие Contact — проверяем:
+      if (eventName === 'Contact') {
+        // А) Защита от ботов-краулеров (если нет движений мыши/тапа и прошло меньше 2 секунд со входа)
+        const timeOnSite = Date.now() - pageLoadTime;
+        if (!isHumanUser && timeOnSite < 2000) {
+          return; // Это бот, не шлем фейковый Contact в ФБ
+        }
+
+        // Б) Защита от мульти-кликов: если этот человек УЖЕ кликал на кнопку ТГ, второй раз Contact не шлем!
+        const alreadyContacted = localStorage.getItem('palma_contact_fired') || sessionStorage.getItem('palma_contact_fired');
+        if (alreadyContacted === 'true' && !testEventCode) {
+          return; // Уже отбили этого лида ранее
+        }
+
+        // Запоминаем, что этот лид уже засчитан
+        try {
+          localStorage.setItem('palma_contact_fired', 'true');
+          sessionStorage.setItem('palma_contact_fired', 'true');
+        } catch (e) {}
+      }
+
+      const fullCustomData = { ...fbUtmData, ...customData };
+
+      ACTIVE_PIXELS.forEach(pxId => {
+        // Уникальный ID события для склейки Браузер + Сервер
+        const eventId = 'evt_' + pxId + '_' + Date.now() + '_' + Math.random().toString(36).substring(2, 8);
+
+        // 1) Отправляем в браузерный пиксель
+        fbq('trackSingle', pxId, eventName, fullCustomData, { eventID: eventId });
+
+        // 2) Отправляем в CAPI (ФБ склеит их в 1 событие благодаря одинаковому eventID)
+        if (ALL_PIXELS[pxId]) {
+          sendServerCAPI(pxId, ALL_PIXELS[pxId], eventName, eventId, customData);
+        }
+      });
+    };
+
+    // 7. Инициализация и PageView (1 раз за сессию)
+    ACTIVE_PIXELS.forEach(pxId => {
+      fbq('init', pxId);
+    });
+    window.trackFBEvent('PageView');
+  </script>
+  <!-- ================= END META PIXEL SETUP ================= -->
 </head>
 <body>
   <!-- ТАЙМЕР БАННЕР -->
@@ -38,7 +210,6 @@
       <nav class="navlinks" aria-label="Основная навигация">
         <a href="#plans" data-i18n="nav_plans">Аккаунты</a>
         <a href="#how" data-i18n="nav_how">Как это работает</a>
-        <!-- Теперь ведет четко на Гарантию -->
         <a href="#guarantee" data-i18n="nav_guarantee">Гарантия</a> 
         <a href="#faq" data-i18n="nav_faq">FAQ</a>
       </nav>
@@ -78,7 +249,6 @@
         </div>
 
         <div class="hero-art" aria-label="Иллюстрация панели кампании">
-          <!-- Фоновое свечение теперь жестко привязано сюда -->
           <div class="glow-bg"></div>
 
           <div class="float-card float-left">
@@ -124,7 +294,7 @@
       </div>
     </section>
 
-    <!-- ТАРИФЫ (Цены убраны, аккордеон работает) -->
+    <!-- ТАРИФЫ -->
     <section class="section" id="plans">
       <div class="wrap">
         <div class="section-head">
@@ -224,7 +394,7 @@
       </div>
     </section>
 
-    <!-- КЕЙСЫ (Фото открываются!) -->
+    <!-- КЕЙСЫ -->
     <section class="section" id="cases">
       <div class="wrap">
         <div class="section-head">
@@ -314,7 +484,6 @@
               <span data-i18n="gar_b2">🔄 Бесплатная замена</span>
             </div>
           </div>
-          <!-- Эта кнопка ведет на FAQ, так как полные условия расписаны там во втором вопросе -->
           <a class="btn btn-secondary" href="#faq" data-i18n="gar_btn">Читать условия в FAQ ↓</a>
         </div>
         
@@ -484,7 +653,6 @@
     };
 
     // --- МУЛЬТИЯЗЫЧНОСТЬ ---
-    // Все твои новые тексты внесены сюда!
     const i18n = {
       ru: {
         page_title: "PALMA MEDIA — аккаунты Google Ads",
@@ -507,7 +675,6 @@
         plans_kicker: "Выберите решение", plans_h2: "Три варианта<br>Один понятный выбор", plans_p: "Сравните варианты и выберите подходящий. Точную цену, наличие сетапов и лимиты менеджер подскажет перед оформлением заказа.",
         plans_note: "Перед оплатой запросите актуальные характеристики, цену, правила использования и полные условия гарантии.",
         
-        // ТАРИФЫ (Без цен, только описание в аккордеоне)
         plan_base: `
             <span class="pill">СТАРТ</span>
             <h3>🚀 Google Ads BASE</h3>
@@ -786,11 +953,43 @@
       });
     });
 
-    // Обработка кнопки результата квиза
-    document.getElementById('send-choice').addEventListener('click', () => {
+    // Кнопка результата квиза -> переход в личку @alex_palma_0001
+    document.getElementById('send-choice').addEventListener('click', (e) => {
+      e.preventDefault();
+      if (typeof window.trackFBEvent === 'function') {
+        window.trackFBEvent('Contact', {
+          content_name: 'Quiz: ' + selections.plan
+        });
+      }
+
       const msg = `Здравствуйте! Мне нужен аккаунт.\n\nМои ответы:\n- Опыт: ${selections.experience}\n- Верификация: ${selections.verification}\n- История: ${selections.history}\n\nПредварительный выбор: ${selections.plan}\n\nПодскажите стоимость и актуальные гео.`;
       const url = 'https://t.me/alex_palma_0001?text=' + encodeURIComponent(msg);
-      window.open(url, '_blank', 'noopener');
+      
+      setTimeout(() => {
+        window.location.href = url;
+      }, 250);
+    });
+
+    // --- ТОЧНЫЙ ОТБИВ ТОЛЬКО НА КНОПКИ ЛИЧКИ МЕНЕДЖЕРА (@alex_palma_0001) ---
+    document.addEventListener('click', function(e) {
+      // Ищем клик ТОЛЬКО по ссылкам на менеджера alex_palma_0001 (канал с отзывами игнорируем полностью)
+      const tgLink = e.target.closest('a[href*="t.me/alex_palma_0001"]');
+      if (!tgLink) return;
+
+      e.preventDefault();
+
+      const targetUrl = tgLink.href;
+      const btnText = tgLink.innerText.trim() || 'Telegram Contact';
+
+      if (typeof window.trackFBEvent === 'function') {
+        window.trackFBEvent('Contact', {
+          content_name: btnText
+        });
+      }
+
+      setTimeout(() => {
+        window.location.href = targetUrl;
+      }, 250);
     });
 
     toggleLang('ru');
