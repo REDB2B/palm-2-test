@@ -2,15 +2,15 @@
    БАЗОВЫЕ НАСТРОЙКИ И ПЕРЕМЕННЫЕ
 ========================================= */
 :root {
-    --bg-main: #F8FAFC;         /* Чистый, современный светло-серый фон */
-    --text-main: #0F172A;       /* Насыщенный темный для текста */
-    --text-muted: #64748B;      /* Приятный серый для подзаголовков */
+    --bg-main: #F8FAFC;         
+    --text-main: #0F172A;       
+    --text-muted: #64748B;      
     
-    --primary-color: #F97316;   /* Яркий, сочный оранжевый */
+    --primary-color: #F97316;   
     --primary-hover: #EA580C;   
-    --secondary-color: #1E293B; /* Глубокий сине-серый для акцентов */
-    --success-green: #10B981;   /* Зеленый для акцентов 'после' */
-    --alert-red: #EF4444;       /* Красный для акцентов 'до' */
+    --secondary-color: #1E293B; 
+    --success-green: #10B981;   
+    --alert-red: #EF4444;       
     
     --font-main: 'Inter', sans-serif;
     --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.05);
@@ -48,7 +48,7 @@ body {
     padding: 14px 28px;
     font-size: 15px;
     font-weight: 700;
-    border-radius: 50px; /* Современные овальные кнопки */
+    border-radius: 50px; 
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
@@ -91,9 +91,14 @@ body {
 
 .btn-large {
     padding: 18px 40px;
-    font-size: 18px;
+    font-size: 16px;
     width: 100%;
     max-width: 380px;
+}
+
+.btn-sm {
+    padding: 12px 20px;
+    font-size: 14px;
 }
 
 /* АНИМАЦИЯ ПУЛЬСАЦИИ */
@@ -106,6 +111,10 @@ body {
     70% { box-shadow: 0 0 0 15px rgba(249, 115, 22, 0); }
     100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0); }
 }
+
+.text-orange { color: var(--primary-color) !important; }
+.text-red { color: var(--alert-red) !important; }
+.text-green { color: var(--success-green) !important; }
 
 /* =========================================
    ШАПКА (HEADER)
@@ -199,14 +208,6 @@ body {
     letter-spacing: -0.5px;
 }
 
-.section-title span {
-    color: var(--success-green);
-}
-
-.section-title span:first-of-type {
-    color: var(--alert-red);
-}
-
 .section-subtitle {
     text-align: center;
     color: var(--text-muted);
@@ -231,116 +232,68 @@ body {
 }
 
 /* =========================================
-   БЛОК ДО/ПОСЛЕ (ПЛАВНЫЙ И КРАСИВЫЙ)
+   БЛОК СРАВНЕНИЯ ДО/ПОСЛЕ (СТАТИЧНЫЙ)
 ========================================= */
-.before-after-section {
+.comparison-section {
     padding: 30px 0 60px;
 }
 
-.ba-slider-container {
-    position: relative;
-    width: 100%;
-    max-width: 850px;
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 900px;
     margin: 0 auto;
-    aspect-ratio: 16 / 10;
+}
+
+.compare-card {
+    background: #fff;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: var(--shadow-hover);
-    background-color: #E2E8F0; 
+    box-shadow: var(--shadow-soft);
+    border: 2px solid transparent;
 }
 
-.ba-image-after, .ba-image-before {
-    position: absolute;
-    top: 0;
-    left: 0;
+.before-card { border-color: rgba(239, 68, 68, 0.3); }
+.after-card { border-color: rgba(16, 185, 129, 0.3); }
+
+.compare-header {
+    padding: 15px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 15px;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+.before-card .compare-header { background: var(--alert-red); }
+.after-card .compare-header { background: var(--success-green); }
+
+.compare-img-wrap {
     width: 100%;
-    height: 100%;
+    aspect-ratio: 16 / 10;
+    background: #F8FAFC;
+    display: flex;
+    align-items: flex-start;
 }
 
-.ba-image-before {
-    width: 50%;
-    overflow: hidden;
-    z-index: 2;
-}
-
-.ba-image-after img, .ba-image-before img {
-    display: block;
+.compare-img-wrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: left;
+    object-position: left top;
 }
-
-/* Невидимый инпут */
-.ba-slider {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    opacity: 0;
-    cursor: ew-resize;
-}
-
-/* Разделительная линия */
-.ba-slider-line {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 4px;
-    height: 100%;
-    background: #ffffff;
-    z-index: 5;
-    transform: translateX(-50%);
-    pointer-events: none;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-}
-
-/* Кнопка на линии */
-.ba-slider-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 44px;
-    height: 44px;
-    background: #ffffff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    color: var(--secondary-color);
-}
-
-/* Темные плашки как на скриншоте */
-.ba-label {
-    position: absolute;
-    bottom: 20px;
-    padding: 8px 16px;
-    background: #333333;
-    color: #ffffff;
-    font-size: 11px;
-    font-weight: 800;
-    border-radius: 6px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.ba-label-before { left: 20px; }
-.ba-label-after { right: 20px; }
 
 /* =========================================
-   БЛОК ПРУФОВ (СЛАЙДЕР) - ИСПРАВЛЕННЫЙ РАЗМЕР
+   БЛОК ПРУФОВ (СЛАЙДЕР)
 ========================================= */
 .proofs {
     padding: 30px 0 60px;
 }
 
 .proofs-slider {
-    padding: 0 15px 50px 15px; /* Убрал огромные отступы по бокам */
-    max-width: 1000px; /* Ограничил ширину, чтобы колонки были меньше */
+    padding: 0 15px 50px 15px; 
+    max-width: 1000px; 
     margin: 0 auto;
 }
 
@@ -355,14 +308,13 @@ body {
     flex-direction: column;
 }
 
-/* Обертка для фото с мягким фоном и contain */
 .proof-img-wrap {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    aspect-ratio: 16 / 11; /* Идеальные пропорции для скринов РК */
-    background: #F1F5F9; /* Мягкий фон под скриншот */
+    aspect-ratio: 16 / 11; 
+    background: #F1F5F9; 
     overflow: hidden; 
     border-bottom: 1px solid #E2E8F0;
 }
@@ -370,7 +322,7 @@ body {
 .proof-img-wrap img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* ФОТО БОЛЬШЕ НЕ ОБРЕЗАЮТСЯ */
+    object-fit: contain; 
     transition: transform 0.4s ease; 
 }
 
@@ -410,7 +362,7 @@ body {
 }
 
 /* =========================================
-   БЛОК: АККАУНТЫ
+   БЛОК: АККАУНТЫ (РАСКРЫВАЮЩИЙСЯ СПИСОК)
 ========================================= */
 .accounts {
     padding: 20px 0 60px;
@@ -419,14 +371,16 @@ body {
 .accounts-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 15px;
-    max-width: 900px;
+    gap: 20px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 .account-card {
     text-align: center;
     padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .acc-icon {
@@ -440,9 +394,78 @@ body {
     color: var(--secondary-color);
 }
 
-.account-card p {
+.acc-short-desc {
     font-size: 14px;
     color: var(--text-muted);
+    margin-bottom: 15px;
+}
+
+/* Настройки details и summary */
+.acc-details {
+    background: #F1F5F9;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 12px 15px;
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+.acc-details summary {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary-color);
+    cursor: pointer;
+    list-style: none;
+    outline: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.acc-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.acc-details summary::after {
+    content: '+';
+    font-size: 18px;
+    color: var(--secondary-color);
+    transition: transform 0.3s ease;
+}
+
+.acc-details[open] summary::after {
+    transform: rotate(45deg);
+}
+
+.acc-details-content {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #E2E8F0;
+}
+
+.acc-details-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.acc-details-content li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: var(--secondary-color);
+}
+
+.acc-details-content li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+.acc-btn {
+    width: 100%;
+    margin-top: auto; 
 }
 
 .accounts-action {
@@ -454,6 +477,10 @@ body {
    АДАПТИВНОСТЬ ДЛЯ ПК И ПЛАНШЕТОВ
 ========================================= */
 @media (min-width: 768px) {
+    .comparison-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
     .hero {
         padding: 80px 0 70px;
     }
@@ -482,6 +509,10 @@ body {
     .accounts-grid {
         grid-template-columns: repeat(3, 1fr); 
         gap: 25px;
+    }
+
+    .account-card {
+        padding: 35px 25px;
     }
 
     .account-card h3 {
