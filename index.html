@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Подтверждение домена Facebook (Твой тег) -->
+    <!-- Подтверждение домена Facebook -->
     <meta name="facebook-domain-verification" content="hc2rf2fyuauzt8xzxi3xb2ce98artb" />
     
-    <title data-i18n="page_title">Трастовые аккаунты Google Ads | Palma Media</title>
+    <title>Трастовые аккаунты Google Ads | Palma Media</title>
     
     <!-- Шрифты -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     
     <!-- Стили библиотек -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
@@ -32,12 +32,14 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     
-    // Твои постоянные пиксели
+    // Пиксель 1
     fbq('init', '1105215478631709');
+    // Пиксель 2
     fbq('init', '2671858263285801');
+    // Пиксель 3
     fbq('init', '1792798531871240');
     
-    // Динамический пиксель из URL (?pixel=123456789)
+    // ДИНАМИЧЕСКИЙ ПИКСЕЛЬ ИЗ URL
     const urlParams = new URLSearchParams(window.location.search);
     const dynamicPixel = urlParams.get('pixel') || urlParams.get('px');
     
@@ -56,9 +58,6 @@
 </head>
 <body>
 
-    <!-- Геометрический фон (точки) -->
-    <div class="abstract-background"></div>
-
     <!-- Навигация -->
     <header class="header">
         <div class="container header-container">
@@ -67,7 +66,7 @@
             </div>
             
             <div class="header-right">
-                <a href="https://t.me/trust_googleadsbot?start=b_01" target="_blank" class="btn btn-outline" data-i18n="nav_contact" onclick="fbq('track', 'Lead');">Взять аккаунт</a>
+                <a href="https://t.me/trust_googleadsbot?start=b_01" target="_blank" class="btn btn-outline" onclick="fbq('track', 'Lead');">Взять аккаунт</a>
             </div>
         </div>
     </header>
@@ -77,12 +76,16 @@
         <div class="container hero-container">
             <div class="hero-badge">iGaming • Betting • Crypto • Nutra</div>
             
-            <h1 class="hero-title" data-i18n="hero_title">Трастовые аккаунты Google Ads, <span>которые держат спенд</span></h1>
+            <h1 class="hero-title">Трастовые аккаунты Google Ads, <span>которые держат спенд</span></h1>
             
-            <p class="hero-subtitle" data-i18n="hero_subtitle">Забудьте про микро-спенды и вылеты на полиси. Выдаем под реальные заливы. 48 часов гарантии на замену при невалиде.</p>
+            <p class="hero-subtitle">Забудьте про микро-спенды и вылеты на полиси. Выдаем сетапы под реальные заливы. 48 часов гарантии на замену при невалиде.</p>
             
+            <div class="hero-highlight">
+                Получи тест-аккаунт под залив прямо сейчас!
+            </div>
+
             <div class="hero-actions">
-                <a href="https://t.me/trust_googleadsbot?start=b_01" target="_blank" class="btn btn-primary pulse-btn" data-i18n="btn_bot" onclick="fbq('track', 'Lead');">Запустить бота</a>
+                <a href="https://t.me/trust_googleadsbot?start=b_01" target="_blank" class="btn btn-primary pulse-btn" onclick="fbq('track', 'Lead');">Запустить бота</a>
             </div>
         </div>
     </section>
@@ -103,15 +106,15 @@
                 <!-- Картинка ДО (Реджект) -->
                 <div class="ba-image-before">
                     <img src="img/before.jpg" alt="Блокировка Google Ads">
-                    <span class="ba-label ba-label-before">Обычный аккаунт</span>
+                    <span class="ba-label ba-label-before">ОБЫЧНЫЙ АККАУНТ</span>
                 </div>
                 
                 <!-- Ползунок -->
                 <input type="range" min="0" max="100" value="50" class="ba-slider" id="ba-slider">
                 <div class="ba-slider-line">
                     <div class="ba-slider-button">
-                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </div>
                 </div>
             </div>
@@ -121,7 +124,7 @@
     <!-- Блок со скриншотами (Пруфы) -->
     <section class="proofs">
         <div class="container">
-            <h2 class="section-title" data-i18n="proofs_title">Хватит верить на слово. <span>Смотрите на цифры.</span></h2>
+            <h2 class="section-title">Хватит верить на слово. <span>Смотрите на цифры.</span></h2>
             
             <!-- Слайдер Swiper -->
             <div class="swiper proofs-slider">
@@ -132,7 +135,7 @@
                             <a href="img/1.jpg" data-fancybox="gallery" class="proof-img-wrap">
                                 <img src="img/1.jpg" alt="Спенд в Google Ads">
                             </a>
-                            <div class="proof-caption" data-i18n="slide_1">Открут $2050+ без банов и проблем запуска</div>
+                            <div class="proof-caption">Открут $2050+ без банов и проблем запуска</div>
                         </div>
                     </div>
                     
@@ -142,7 +145,7 @@
                             <a href="img/2.jpg" data-fancybox="gallery" class="proof-img-wrap">
                                 <img src="img/2.jpg" alt="Биллинг Google Ads">
                             </a>
-                            <div class="proof-caption" data-i18n="slide_2">Успешные биллинги и стабильные списания.</div>
+                            <div class="proof-caption">Успешные биллинги и стабильные списания.</div>
                         </div>
                     </div>
                     
@@ -152,7 +155,7 @@
                             <a href="img/3.jpg" data-fancybox="gallery" class="proof-img-wrap">
                                 <img src="img/3.jpg" alt="Стабильный открут">
                             </a>
-                            <div class="proof-caption" data-i18n="slide_3">Низкий CPA. Кампании цепляются быстро.</div>
+                            <div class="proof-caption">Низкий CPA. Кампании цепляются быстро.</div>
                         </div>
                     </div>
                     
@@ -162,8 +165,8 @@
                             <a href="img/4.jpg" data-fancybox="gallery" class="proof-img-wrap">
                                 <img src="img/4.jpg" alt="Отзывы Palma Media">
                             </a>
-                            <div class="proof-caption" data-i18n="slide_4">Остальные результаты с отзывами вы можете посмотреть в канале</div>
-                            <a href="https://t.me/PalmaMediaLove" target="_blank" class="btn btn-outline slide-btn" data-i18n="btn_reviews" onclick="fbq('track', 'ViewContent');">Перейти в канал</a>
+                            <div class="proof-caption">Остальные результаты с отзывами вы можете посмотреть в канале</div>
+                            <a href="https://t.me/PalmaMediaLove" target="_blank" class="btn btn-secondary slide-btn" onclick="fbq('track', 'ViewContent');">Перейти в канал</a>
                         </div>
                     </div>
                 </div>
@@ -178,31 +181,31 @@
     <!-- КОМПАКТНЫЙ БЛОК: ТИПЫ АККАУНТОВ И ПОКУПКА -->
     <section class="accounts" id="accounts">
         <div class="container">
-            <h2 class="section-title" data-i18n="acc_title">Готовые <span>решения</span></h2>
+            <h2 class="section-title">Готовые <span>решения</span></h2>
             <p class="section-subtitle">Определитесь с форматом и сразу переходите к заливу.</p>
             
             <div class="grid-layout accounts-grid">
                 <div class="white-card account-card">
                     <div class="acc-icon">🚀</div>
                     <h3>BASE</h3>
-                    <p data-i18n="acc_1_desc">Чистый аккаунт для самостоятельного прогрева и запуска.</p>
+                    <p>Чистый аккаунт для самостоятельного прогрева и запуска.</p>
                 </div>
                 
                 <div class="white-card account-card">
                     <div class="acc-icon">✅</div>
                     <h3>VERIFIED</h3>
-                    <p data-i18n="acc_2_desc">Аккаунт с пройденной верификацией рекламодателя.</p>
+                    <p>Аккаунт с пройденной верификацией рекламодателя.</p>
                 </div>
 
                 <div class="white-card account-card">
                     <div class="acc-icon">💎</div>
                     <h3>TRUST MAX</h3>
-                    <p data-i18n="acc_3_desc">Верификация документами + запущенная белая кампания.</p>
+                    <p>Верификация документами + запущенная белая кампания.</p>
                 </div>
             </div>
 
             <div class="accounts-action">
-                <a href="https://t.me/trust_googleadsbot?start=b_01" target="_blank" class="btn btn-primary btn-large pulse-btn" onclick="fbq('track', 'Lead');">Начать работу в боте</a>
+                <a href="https://t.me/trust_googleadsbot?start=b_01" target="_blank" class="btn btn-primary btn-large pulse-btn" onclick="fbq('track', 'Lead');">Получить аккаунт в боте</a>
             </div>
         </div>
     </section>
@@ -212,7 +215,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     
     <script>
-        // Инициализация слайдера и всплывающих окон
+        // Инициализация слайдера (Колонки теперь меньше и аккуратнее)
         const swiper = new Swiper('.proofs-slider', {
             slidesPerView: 1, 
             spaceBetween: 20, 
@@ -220,8 +223,8 @@
             pagination: { el: '.swiper-pagination', clickable: true },
             navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
             breakpoints: {
-                768: { slidesPerView: 2, spaceBetween: 30 },
-                1024: { slidesPerView: 3, spaceBetween: 40 }
+                640: { slidesPerView: 2, spaceBetween: 20 },
+                1024: { slidesPerView: 3, spaceBetween: 30 }
             }
         });
 
@@ -231,7 +234,6 @@
         const baSlider = document.getElementById('ba-slider');
         const baBeforeImage = document.querySelector('.ba-image-before');
         const baSliderLine = document.querySelector('.ba-slider-line');
-        const baSliderButton = document.querySelector('.ba-slider-button');
 
         if (baSlider) {
             baSlider.addEventListener('input', (e) => {
