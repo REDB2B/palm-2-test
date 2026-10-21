@@ -90,31 +90,26 @@
         </div>
     </section>
 
-    <!-- ИНТЕРАКТИВНЫЙ БЛОК ДО/ПОСЛЕ -->
-    <section class="before-after-section">
+    <!-- БЛОК СРАВНЕНИЯ ДО/ПОСЛЕ (Статичный) -->
+    <section class="comparison-section">
         <div class="container">
-            <h2 class="section-title">Меняем <span>красное</span> на <span>зеленое</span></h2>
-            <p class="section-subtitle">Потяни ползунок, чтобы увидеть разницу в запусках.</p>
+            <h2 class="section-title">Меняем <span class="text-red">красное</span> на <span class="text-green">зеленое</span></h2>
+            <p class="section-subtitle">Одни и те же креативы. Разный результат.</p>
             
-            <div class="ba-slider-container">
-                <!-- Картинка ПОСЛЕ (Успешный спенд) -->
-                <div class="ba-image-after">
-                    <img src="img/after.jpg" alt="Успешный спенд Google Ads">
-                    <span class="ba-label ba-label-after">С PALMA MEDIA</span>
-                </div>
-                
+            <div class="comparison-grid">
                 <!-- Картинка ДО (Реджект) -->
-                <div class="ba-image-before">
-                    <img src="img/before.jpg" alt="Блокировка Google Ads">
-                    <span class="ba-label ba-label-before">ОБЫЧНЫЙ АККАУНТ</span>
+                <div class="compare-card before-card">
+                    <div class="compare-header">ОБЫЧНЫЙ АККАУНТ</div>
+                    <div class="compare-img-wrap">
+                        <img src="img/before.jpg" alt="Блокировка Google Ads">
+                    </div>
                 </div>
-                
-                <!-- Ползунок -->
-                <input type="range" min="0" max="100" value="50" class="ba-slider" id="ba-slider">
-                <div class="ba-slider-line">
-                    <div class="ba-slider-button">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+
+                <!-- Картинка ПОСЛЕ (Актив) -->
+                <div class="compare-card after-card">
+                    <div class="compare-header">С PALMA MEDIA</div>
+                    <div class="compare-img-wrap">
+                        <img src="img/after.jpg" alt="Успешный спенд Google Ads">
                     </div>
                 </div>
             </div>
@@ -129,7 +124,6 @@
             <!-- Слайдер Swiper -->
             <div class="swiper proofs-slider">
                 <div class="swiper-wrapper">
-                    <!-- Слайд 1 -->
                     <div class="swiper-slide">
                         <div class="proof-card white-card">
                             <a href="img/1.jpg" data-fancybox="gallery" class="proof-img-wrap">
@@ -139,7 +133,6 @@
                         </div>
                     </div>
                     
-                    <!-- Слайд 2 -->
                     <div class="swiper-slide">
                         <div class="proof-card white-card">
                             <a href="img/2.jpg" data-fancybox="gallery" class="proof-img-wrap">
@@ -149,7 +142,6 @@
                         </div>
                     </div>
                     
-                    <!-- Слайд 3 -->
                     <div class="swiper-slide">
                         <div class="proof-card white-card">
                             <a href="img/3.jpg" data-fancybox="gallery" class="proof-img-wrap">
@@ -159,7 +151,6 @@
                         </div>
                     </div>
                     
-                    <!-- Слайд 4 -->
                     <div class="swiper-slide">
                         <div class="proof-card white-card custom-slide-content">
                             <a href="img/4.jpg" data-fancybox="gallery" class="proof-img-wrap">
@@ -170,7 +161,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Навигация -->
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-pagination"></div>
@@ -184,28 +174,75 @@
             <h2 class="section-title">Готовые <span>решения</span></h2>
             <p class="section-subtitle">Определитесь с форматом и сразу переходите к заливу.</p>
             
-            <div class="grid-layout accounts-grid">
+            <div class="accounts-grid">
+                
+                <!-- BASE -->
                 <div class="white-card account-card">
                     <div class="acc-icon">🚀</div>
                     <h3>BASE</h3>
-                    <p>Чистый аккаунт для самостоятельного прогрева и запуска.</p>
+                    <p class="acc-short-desc">Чистый аккаунт для самостоятельного прогрева и запуска.</p>
+                    
+                    <details class="acc-details">
+                        <summary>Что входит в сетап?</summary>
+                        <div class="acc-details-content">
+                            <ul>
+                                <li>Антидетект профиль (Octo/Dolphin)</li>
+                                <li>Трастовые резидентские прокси</li>
+                                <li>Прогретая почта с историей поиска</li>
+                                <li>Гарантия замены при микро-спендах</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <a href="https://t.me/trust_googleadsbot?start=b_01" target="_blank" class="btn btn-primary btn-sm acc-btn" onclick="fbq('track', 'Lead');">Подобрать аккаунт</a>
                 </div>
                 
+                <!-- VERIFIED -->
                 <div class="white-card account-card">
                     <div class="acc-icon">✅</div>
                     <h3>VERIFIED</h3>
-                    <p>Аккаунт с пройденной верификацией рекламодателя.</p>
+                    <p class="acc-short-desc">Аккаунт с пройденной верификацией рекламодателя.</p>
+
+                    <details class="acc-details">
+                        <summary>Что входит в сетап?</summary>
+                        <div class="acc-details-content">
+                            <ul>
+                                <li>Пройдена верификация документами</li>
+                                <li>Подвязанный платежный профиль</li>
+                                <li>Антидетект профиль + чистые прокси</li>
+                                <li>Расширенная гарантия от полиси 48ч</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <a href="https://t.me/trust_googleadsbot?start=b_01" target="_blank" class="btn btn-primary btn-sm acc-btn" onclick="fbq('track', 'Lead');">Подобрать аккаунт</a>
                 </div>
 
+                <!-- TRUST MAX -->
                 <div class="white-card account-card">
                     <div class="acc-icon">💎</div>
                     <h3>TRUST MAX</h3>
-                    <p>Верификация документами + запущенная белая кампания.</p>
+                    <p class="acc-short-desc">Верификация документами + запущенная белая кампания.</p>
+
+                    <details class="acc-details">
+                        <summary>Что входит в сетап?</summary>
+                        <div class="acc-details-content">
+                            <ul>
+                                <li>Активная "белая" кампания в откруте</li>
+                                <li>Успешные списания по биллингу</li>
+                                <li>Полная верификация аккаунта</li>
+                                <li>Премиум прокси и саппорт 24/7</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <a href="https://t.me/trust_googleadsbot?start=b_01" target="_blank" class="btn btn-primary btn-sm acc-btn" onclick="fbq('track', 'Lead');">Подобрать аккаунт</a>
                 </div>
+
             </div>
 
             <div class="accounts-action">
-                <a href="https://t.me/trust_googleadsbot?start=b_01" target="_blank" class="btn btn-primary btn-large pulse-btn" onclick="fbq('track', 'Lead');">Получить аккаунт в боте</a>
+                <a href="https://t.me/trust_googleadsbot?start=b_01" target="_blank" class="btn btn-outline btn-large" onclick="fbq('track', 'Lead');">За другими расходниками</a>
             </div>
         </div>
     </section>
@@ -215,7 +252,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     
     <script>
-        // Инициализация слайдера (Колонки теперь меньше и аккуратнее)
         const swiper = new Swiper('.proofs-slider', {
             slidesPerView: 1, 
             spaceBetween: 20, 
@@ -229,19 +265,6 @@
         });
 
         Fancybox.bind('[data-fancybox="gallery"]', {});
-
-        // Логика слайдера ДО/ПОСЛЕ
-        const baSlider = document.getElementById('ba-slider');
-        const baBeforeImage = document.querySelector('.ba-image-before');
-        const baSliderLine = document.querySelector('.ba-slider-line');
-
-        if (baSlider) {
-            baSlider.addEventListener('input', (e) => {
-                const sliderValue = e.target.value;
-                baBeforeImage.style.width = `${sliderValue}%`;
-                baSliderLine.style.left = `${sliderValue}%`;
-            });
-        }
     </script>
 </body>
 </html>
